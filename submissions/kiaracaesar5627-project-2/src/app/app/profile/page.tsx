@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ProfileForm } from "@/components/ProfileForm";
 import { getSessionUser } from "@/lib/auth";
+import { BG_COOKIE, parseBackground } from "@/lib/background";
 import { withShell } from "@/lib/shell";
 import { parseTheme, THEME_COOKIE } from "@/lib/theme";
 
@@ -14,6 +15,7 @@ export default async function ProfilePage() {
 
   const jar = await cookies();
   const theme = parseTheme(jar.get(THEME_COOKIE)?.value);
+  const background = parseBackground(jar.get(BG_COOKIE)?.value);
 
   return withShell(
     user,
@@ -28,7 +30,7 @@ export default async function ProfilePage() {
           </p>
         </div>
       </header>
-      <ProfileForm user={user} theme={theme} />
+      <ProfileForm user={user} theme={theme} background={background} />
     </section>,
   );
 }

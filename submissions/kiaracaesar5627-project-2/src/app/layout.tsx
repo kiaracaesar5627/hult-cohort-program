@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import "./globals.css";
+import { BG_COOKIE, parseBackground } from "@/lib/background";
 import { parseTheme, THEME_COOKIE } from "@/lib/theme";
 
 export const metadata: Metadata = {
@@ -14,9 +15,10 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const jar = await cookies();
   const theme = parseTheme(jar.get(THEME_COOKIE)?.value);
+  const bg = parseBackground(jar.get(BG_COOKIE)?.value);
 
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en" data-theme={theme} data-bg={bg}>
       <body>{children}</body>
     </html>
   );

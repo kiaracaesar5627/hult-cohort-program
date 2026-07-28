@@ -4,7 +4,9 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { changePasswordAction, updateProfileAction } from "@/lib/actions";
 import type { SessionUser } from "@/lib/auth";
+import type { BackgroundId } from "@/lib/background";
 import type { Theme } from "@/lib/theme";
+import { BackgroundPicker } from "./BackgroundPicker";
 import { SubmitButton } from "./SubmitButton";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -18,9 +20,11 @@ function initials(name: string) {
 export function ProfileForm({
   user,
   theme,
+  background,
 }: {
   user: SessionUser;
   theme: Theme;
+  background: BackgroundId;
 }) {
   const router = useRouter();
   const [profileError, setProfileError] = useState<string | null>(null);
@@ -123,6 +127,11 @@ export function ProfileForm({
           Choose light or dark mode. Your preference is saved for this browser.
         </p>
         <ThemeToggle initialTheme={theme} />
+        <h3 className="profile-subsection-title">Background</h3>
+        <p className="muted profile-appearance-hint">
+          Pick an atmosphere for the app shell. Works with light and dark mode.
+        </p>
+        <BackgroundPicker initialBackground={background} />
       </section>
 
       <form
