@@ -9,8 +9,10 @@ export default function PrivacyPage() {
       <p className="eyebrow">Legal</p>
       <h1>Privacy</h1>
       <p className="support">
-        {SITE.name} is a mock-interview practice app operated by @{SITE.handle}
-        for the Hult Cohort Summer Pilot. This page is the public privacy notice.
+        {SITE.brandLine} is a mock-interview practice app operated by{" "}
+        {SITE.company.legalName} (founder @{SITE.handle}) for the Hult Cohort
+        Summer Pilot. {SITE.company.meaning} {SITE.company.mission} This page is
+        the public privacy notice.
       </p>
       <h2>What we collect</h2>
       <ul>

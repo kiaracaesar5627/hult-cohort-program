@@ -7,17 +7,31 @@ export const metadata: Metadata = { title: "Investors" };
 export default function InvestorsPage() {
   return (
     <article className="section prose-page" style={{ borderTop: "none", paddingTop: "2rem" }}>
-      <p className="eyebrow">One-pager · {SITE.name}</p>
-      <h1>Role-specific interview practice for people already in a hiring process</h1>
-      <p className="lede">{SITE.tagline}</p>
+      <p className="eyebrow">One-pager · {SITE.brandLine}</p>
+      <h1>{SITE.company.mission}</h1>
+      <p className="lede">{SITE.company.origin.professional}</p>
+      <p>{SITE.company.origin.human}</p>
       <p>
-        Most interview products coach a generic “interview.” {SITE.name} coaches
+        Most interview products coach a generic “interview.” {SITE.product.name}{" "}
+        by {SITE.company.name} coaches
         the <em>job the candidate applied to</em> — 320 tracks, 25 interviewer
         prompts each, with a playbook and a debrief. Production app:{" "}
         <a className="text-link" href={`${SITE.productionUrl}/`}>
           {SITE.productionUrl}/
         </a>
         .
+      </p>
+      <h2>Why Novaris</h2>
+      <p>
+        <strong>Nova</strong> — {SITE.company.etymology.nova}. <strong>Aris</strong> —{" "}
+        {SITE.company.etymology.aris}. We build for{" "}
+        {SITE.company.pillars.map((p, i) => (
+          <span key={p}>
+            {i > 0 ? " and " : ""}
+            <em>{p.toLowerCase()}</em>
+          </span>
+        ))}
+        : practice before the door opens, capability before anyone is watching.
       </p>
       <h2>Problem</h2>
       <p>

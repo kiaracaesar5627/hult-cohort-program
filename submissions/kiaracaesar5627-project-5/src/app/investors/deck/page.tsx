@@ -7,9 +7,19 @@ const SLIDES: { title: string; body: string[] }[] = [
   {
     title: "Title",
     body: [
-      `${SITE.name} — practice the interview for the job you applied to.`,
-      "Founder: GitHub @kiaracaesar5627 · Hult Cohort Summer Pilot 2026",
-      `Live: ${SITE.name} — ${SITE.productionUrl}/`,
+      `${SITE.brandLine} — ${SITE.company.tagline}`,
+      `${SITE.company.name} · ${SITE.company.mission}`,
+      `Founder: GitHub @kiaracaesar5627 · Hult Cohort Summer Pilot 2026`,
+      `Live: ${SITE.product.name} — ${SITE.productionUrl}/`,
+    ],
+  },
+  {
+    title: "Company",
+    body: [
+      `${SITE.company.name} — ${SITE.company.tagline}`,
+      SITE.company.origin.professional,
+      SITE.company.origin.human,
+      `Pillars: ${SITE.company.pillars.join(" + ")}. ${SITE.company.meaning}`,
     ],
   },
   {
@@ -105,8 +115,8 @@ const SLIDES: { title: string; body: string[] }[] = [
 export default function PitchDeckPage() {
   return (
     <section className="section" style={{ borderTop: "none", paddingTop: "2rem" }}>
-      <p className="eyebrow">Pitch deck · 12 slides · print to PDF</p>
-      <h1>{SITE.name}</h1>
+      <p className="eyebrow">Pitch deck · 13 slides · print to PDF</p>
+      <h1>{SITE.brandLine}</h1>
       {SLIDES.map((slide, i) => (
         <article key={slide.title} className="slide">
           <p className="meta">

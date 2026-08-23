@@ -70,10 +70,25 @@ a {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
   font-family: var(--font-display);
   font-weight: 650;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
+}
+
+.brand-name {
+  line-height: 1.1;
+}
+
+.brand-by {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 .nav {
@@ -1158,6 +1173,73 @@ a {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.footer-brand {
+  margin: 0 0 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.footer-brand strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 650;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+}
+
+.footer-meaning {
+  font-size: 0.8rem;
+  font-style: italic;
+  max-width: 42ch;
+}
+
+.footer-links {
+  margin: 0;
+}
+
+.hero-kicker {
+  margin-top: 0.75rem;
+  max-width: 36ch;
+}
+
+.about-page .about-block {
+  margin-top: 2rem;
+}
+
+.etymology-list {
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.etymology-list dt {
+  font-family: var(--font-display);
+  font-weight: 650;
+  color: var(--accent);
+}
+
+.etymology-list dd {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.future-rooms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.about-closing {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .site-footer a {

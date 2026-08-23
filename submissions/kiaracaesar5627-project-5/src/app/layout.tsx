@@ -8,10 +8,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: `${SITE.name} · Mock interviews`,
-    template: `%s · ${SITE.name}`,
+    default: `${SITE.brandLine} · Mock interviews`,
+    template: `%s · ${SITE.product.name}`,
   },
-  description: SITE.description,
+  description: SITE.metaDescription,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -28,7 +28,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="shell">
           <header className="site-header">
             <Link href="/" className="brand">
-              {SITE.name}
+              <span className="brand-name">{SITE.product.name}</span>
+              <span className="brand-by">by {SITE.company.name}</span>
             </Link>
             <SiteNav />
           </header>
@@ -37,12 +38,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
           <footer className="site-footer">
-            {SITE.name} · mock interview practice · @{SITE.handle} ·{" "}
-            <Link href="/demo">Demo</Link>
-            {" · "}
-            <Link href="/tips">Pro tips</Link>
-            {" · "}
-            <Link href="/privacy">Privacy</Link>
+            <p className="footer-brand">
+              <strong>{SITE.brandLine}</strong>
+              <span className="footer-tagline">{SITE.company.tagline}</span>
+              <span className="footer-meaning">{SITE.company.meaning}</span>
+            </p>
+            <p className="footer-links">
+              {SITE.company.legalName} · @{SITE.handle} ·{" "}
+              <Link href="/about">About</Link>
+              {" · "}
+              <Link href="/demo">Demo</Link>
+              {" · "}
+              <Link href="/tips">Pro tips</Link>
+              {" · "}
+              <Link href="/privacy">Privacy</Link>
+            </p>
           </footer>
         </div>
       </body>

@@ -8,6 +8,7 @@ import { PracticeJournal } from "@/components/PracticeJournal";
 import { DemoWalkthrough } from "@/components/DemoWalkthrough";
 import { getTrack } from "@/lib/lessons";
 import { isPressureStage } from "@/lib/track-model";
+import { SITE } from "@/lib/site";
 import { TRACK_FAMILY_ORDER, TRACK_FAMILY_SHORT, trackFamily } from "@/lib/track-family";
 import {
   DEMO_FEATURED_SLUGS,
@@ -62,10 +63,11 @@ export function DemoHub() {
 
   return (
     <section className="section demo-hub" style={{ borderTop: "none", paddingTop: "2rem" }}>
-      <p className="eyebrow">Live product · presenter walkthrough</p>
-      <h1>Demo Interview Room</h1>
+      <p className="eyebrow">{SITE.brandLine}</p>
+      <h1>Demo {SITE.product.name}</h1>
       <p className="lede">
-        Click through while you talk. This is the real catalog and a live room — not a slide deck.
+        {SITE.company.tagline} Click through while you talk — real catalog, live room, not a slide
+        deck.
       </p>
       <div className="cta-row" style={{ marginBottom: "1.25rem" }}>
         <button type="button" className="btn primary" onClick={() => replaceQuery(1, trackSlug)}>

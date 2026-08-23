@@ -16,9 +16,12 @@ export default function HomePage() {
       <FirstVisitTour />
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Not another flashcard bank</p>
-          <h1>{SITE.name}</h1>
-          <p className="lede">{SITE.tagline}</p>
+          <p className="eyebrow">{SITE.brandLine}</p>
+          <h1>{SITE.product.name}</h1>
+          <p className="lede">{SITE.product.tagline}</p>
+          <p className="support hero-kicker">
+            {SITE.company.tagline} {SITE.company.heroKicker}
+          </p>
           <div className="cta-row">
             <Link href="/practice" className="btn primary">
               Open a room
@@ -48,8 +51,8 @@ export default function HomePage() {
       <section className="section" id="difference">
         <h2>Built like the interview, not a quiz</h2>
         <p className="support">
-          Most prep tools dump generic questions. Interview Room puts you across the table from a
-          role-specific interviewer — with a mock loop that feels like interview day.
+          Most prep tools dump generic questions. {SITE.product.name} puts you across the table from a
+          role-specific interviewer — so you walk in ready, not rehearsing for the wrong conversation.
         </p>
         <ol className="how-steps">
           <li>
