@@ -69,6 +69,16 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+.brand-lockup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
 .brand {
   display: inline-flex;
   align-items: baseline;
@@ -81,6 +91,12 @@ a {
 
 .brand-name {
   line-height: 1.1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-name:hover {
+  color: var(--accent);
 }
 
 .brand-by {
@@ -89,6 +105,11 @@ a {
   font-size: 0.72rem;
   letter-spacing: 0.02em;
   color: var(--muted);
+  text-decoration: none;
+}
+
+.brand-by:hover {
+  color: var(--accent);
 }
 
 .nav {
@@ -1240,6 +1261,188 @@ a {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
+}
+
+/* —— Novaris company site —— */
+.company-hero {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: 3rem 0 3.5rem;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .company-hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.company-hero::before {
+  content: "";
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: min(45vw, 420px);
+  height: min(45vw, 420px);
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.company-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+}
+
+.company-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.company-tagline {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+}
+
+.company-mission {
+  max-width: 42ch;
+  margin-bottom: 1.25rem;
+}
+
+.company-hero-aside {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.company-threshold-card {
+  padding: 1.15rem 1.25rem;
+  background: color-mix(in srgb, var(--panel) 92%, white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+}
+
+.company-threshold-card.accent {
+  border-left-color: var(--accent-2);
+}
+
+.company-threshold-card p:last-child {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.company-section {
+  scroll-margin-top: 1rem;
+}
+
+.company-human {
+  margin-top: 1rem;
+}
+
+.company-etymology {
+  margin-top: 1.25rem;
+}
+
+.pillar-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-card {
+  padding: 1.25rem 1.3rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.pillar-card h3 {
+  font-family: var(--font-display);
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+
+.pillar-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.values-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.values-grid li {
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--panel) 90%, white);
+  border-top: 2px solid var(--line);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.product-showcase {
+  margin-top: 1.25rem;
+}
+
+.product-card {
+  padding: 1.5rem 1.4rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  max-width: 36rem;
+}
+
+.product-card.featured {
+  border-top: 3px solid var(--accent);
+}
+
+.product-card h3 {
+  font-family: var(--font-display);
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.35rem;
+}
+
+.product-card p {
+  margin: 0 0 0.65rem;
+  line-height: 1.5;
+}
+
+.product-detail {
+  margin-bottom: 1rem;
+}
+
+.company-future {
+  margin-top: 1rem;
+}
+
+.company-closing {
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
 }
 
 .site-footer a {

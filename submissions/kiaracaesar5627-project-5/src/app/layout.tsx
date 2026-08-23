@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE, siteUrl } from "@/lib/site";
+import { SITE, novarisUrl, siteUrl } from "@/lib/site";
 import { EnsurePracticeSession } from "@/components/EnsurePracticeSession";
 import { SiteNav } from "@/components/SiteNav";
 import "./globals.css";
@@ -27,10 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="shell">
           <header className="site-header">
-            <Link href="/" className="brand">
-              <span className="brand-name">{SITE.product.name}</span>
-              <span className="brand-by">by {SITE.company.name}</span>
-            </Link>
+            <div className="brand-lockup">
+              <Link href="/" className="brand-name">{SITE.product.name}</Link>
+              <a href={novarisUrl()} className="brand-by" rel="noopener noreferrer">
+                by {SITE.company.name}
+              </a>
+            </div>
             <SiteNav />
           </header>
           <main>
@@ -45,7 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
             <p className="footer-links">
               {SITE.company.legalName} · @{SITE.handle} ·{" "}
-              <Link href="/about">About</Link>
+              <a href={novarisUrl()} rel="noopener noreferrer">
+                {SITE.company.name}
+              </a>
+              {" · "}
+              <Link href="/">Interview Room</Link>
               {" · "}
               <Link href="/demo">Demo</Link>
               {" · "}

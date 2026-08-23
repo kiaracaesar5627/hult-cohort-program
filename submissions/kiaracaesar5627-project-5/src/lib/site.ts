@@ -91,3 +91,10 @@ export function siteUrl(): string {
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   return "http://localhost:3000";
 }
+
+/** Standalone Novaris company platform (separate Next.js app). */
+export function novarisUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_NOVARIS_URL?.trim();
+  if (raw) return raw.replace(/\/$/, "");
+  return "http://localhost:3001";
+}

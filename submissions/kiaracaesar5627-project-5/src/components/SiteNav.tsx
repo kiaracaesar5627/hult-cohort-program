@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { novarisUrl } from "@/lib/site";
 
 const LINKS = [
-  { href: "/practice", label: "Practice" },
-  { href: "/demo", label: "Demo" },
-  { href: "/about", label: "About" },
-  { href: "/tips", label: "Pro tips" },
+  { href: novarisUrl(), label: "Novaris", external: true },
+  { href: "/practice", label: "Practice", external: false },
+  { href: "/demo", label: "Demo", external: false },
+  { href: "/tips", label: "Pro tips", external: false },
 ] as const;
 
 const SETTINGS_LINKS = [
@@ -62,11 +63,17 @@ export function SiteNav() {
         {open ? "Close" : "Menu"}
       </button>
       <div id="primary-nav" className={open ? "nav-links open" : "nav-links"}>
-        {LINKS.map((link) => (
-          <Link key={link.href} href={link.href} onClick={closeNav}>
-            {link.label}
-          </Link>
-        ))}
+        {LINKS.map((link) =>
+          link.external ? (
+            <a key={link.href} href={link.href} rel="noopener noreferrer" onClick={closeNav}>
+              {link.label}
+            </a>
+          ) : (
+            <Link key={link.href} href={link.href} onClick={closeNav}>
+              {link.label}
+            </Link>
+          ),
+        )}
         <div className="settings-menu" ref={settingsRef}>
           <button
             type="button"

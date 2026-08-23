@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #14181f;
+  --paper: #f3f0ea;
+  --panel: #fffdf8;
+  --line: rgba(20, 24, 31, 0.12);
+  --muted: #5c6570;
+  --accent: #0f766e;
+  --accent-2: #c2410c;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(15, 118, 110, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(194, 65, 12, 0.08), transparent 50%),
+    linear-gradient(180deg, #efebe3 0%, var(--paper) 40%, #e7e2d8 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.shell {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.brand:hover {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding: 1.75rem 0 2.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 0.75rem;
+}
+
+.footer-brand strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.footer-tagline {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.footer-meaning {
+  font-size: 0.85rem;
+}
+
+.footer-links a,
+.text-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lede {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+.support {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--ink);
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn.compact {
+  min-height: 2.35rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.88rem;
+}
+
+.company-hero {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: 3rem 0 3.5rem;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .company-hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+  }
+}
+
+.company-hero::before {
+  content: "";
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: min(45vw, 420px);
+  height: min(45vw, 420px);
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.company-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+}
+
+.company-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.company-tagline {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem;
+}
+
+.company-mission {
+  max-width: 42ch;
+  margin-bottom: 1.25rem;
+}
+
+.company-hero-aside {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.company-threshold-card {
+  padding: 1.15rem 1.25rem;
+  background: color-mix(in srgb, var(--panel) 92%, white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+}
+
+.company-threshold-card.accent {
+  border-left-color: var(--accent-2);
+}
+
+.company-threshold-card p:last-child {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.pillar-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-card {
+  padding: 1.25rem 1.3rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.pillar-card h3 {
+  font-family: var(--font-display);
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+
+.pillar-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.values-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.values-grid li {
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--panel) 90%, white);
+  border-top: 2px solid var(--line);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.product-showcase {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.product-card {
+  padding: 1.5rem 1.4rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  max-width: 40rem;
+}
+
+.product-card.featured {
+  border-top: 3px solid var(--accent);
+}
+
+.product-card h3 {
+  font-family: var(--font-display);
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.35rem;
+}
+
+.product-card p {
+  margin: 0 0 0.65rem;
+  line-height: 1.5;
+}
+
+.etymology-list {
+  margin: 1.25rem 0 0;
+}
+
+.etymology-list dt {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.etymology-list dd {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+}
+
+.future-rooms {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.contact-card {
+  margin-top: 1rem;
+  padding: 1.25rem 1.3rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  max-width: 32rem;
+}
+
+.contact-card p {
+  margin: 0 0 0.75rem;
+}
+
+.page-intro {
+  padding: 2rem 0 1rem;
+}
+
+.page-intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0.25rem 0 0.75rem;
+  letter-spacing: -0.02em;
+}
