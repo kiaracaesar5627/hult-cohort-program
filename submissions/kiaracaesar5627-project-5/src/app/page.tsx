@@ -46,69 +46,105 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        <div className="hero-stats" aria-label="Catalog size">
+          <div className="hero-stat">
+            <strong>320</strong>
+            <span>Job tracks</span>
+          </div>
+          <div className="hero-stat">
+            <strong>16</strong>
+            <span>Career majors</span>
+          </div>
+          <div className="hero-stat">
+            <strong>30</strong>
+            <span>Prompts per track</span>
+          </div>
+        </div>
       </section>
 
-      <section className="section" id="difference">
-        <h2>Built like the interview, not a quiz</h2>
-        <p className="support">
-          Most prep tools dump generic questions. {SITE.product.name} puts you across the table from a
-          role-specific interviewer — so you walk in ready, not rehearsing for the wrong conversation.
-        </p>
-        <ol className="how-steps">
-          <li>
-            <strong>320 job tracks</strong>
-            <span>16 career majors · 30 prompts each · including 5 pressure questions</span>
-          </li>
-          <li>
-            <strong>Speak mode + timer</strong>
-            <span>Answer out loud under the clock — Space, S, and P shortcuts</span>
-          </li>
-          <li>
-            <strong>Answer review + interview tips</strong>
-            <span>Marks your scratch draft for structure, evidence, and how to speak in the room</span>
-          </li>
-          <li>
-            <strong>Mock loop</strong>
-            <span>Five rooms in one sitting, then a private scorecard on this device</span>
-          </li>
-        </ol>
+      <section className="section band-panel" id="difference">
+        <div className="section-inner">
+          <div className="section-intro">
+            <p className="eyebrow">Why it works</p>
+            <h2>Built like the interview, not a quiz</h2>
+            <p className="support">
+              Most prep tools dump generic questions. {SITE.product.name} puts you across the table from
+              a role-specific interviewer — so you walk in ready, not rehearsing for the wrong
+              conversation.
+            </p>
+          </div>
+          <ol className="how-steps bento">
+            <li>
+              <span className="step-num">01</span>
+              <strong>320 job tracks</strong>
+              <span>16 career majors · 30 prompts each · including 5 pressure questions</span>
+            </li>
+            <li>
+              <span className="step-num">02</span>
+              <strong>Speak mode + timer</strong>
+              <span>Answer out loud under the clock — Space, S, and P shortcuts</span>
+            </li>
+            <li>
+              <span className="step-num">03</span>
+              <strong>Answer review + tips</strong>
+              <span>Marks your scratch draft for structure, evidence, and how to speak in the room</span>
+            </li>
+            <li>
+              <span className="step-num">04</span>
+              <strong>Mock loop</strong>
+              <span>Five rooms in one sitting, then a private scorecard on this device</span>
+            </li>
+          </ol>
+        </div>
       </section>
 
       <section className="section majors-strip">
-        <h2>Sixteen majors</h2>
-        <p className="support">From healthcare to trades to government — not only tech and finance.</p>
-        <ul className="major-pills">
-          {TRACK_FAMILY_ORDER.map((f) => (
-            <li key={f}>
-              <Link href={`/practice?major=${encodeURIComponent(f)}`}>{TRACK_FAMILY_SHORT[f]}</Link>
-            </li>
-          ))}
-        </ul>
+        <div className="section-inner">
+          <div className="section-intro">
+            <p className="eyebrow">Coverage</p>
+            <h2>Sixteen majors</h2>
+            <p className="support">From healthcare to trades to government — not only tech and finance.</p>
+          </div>
+          <ul className="major-pills">
+            {TRACK_FAMILY_ORDER.map((f) => (
+              <li key={f}>
+                <Link href={`/practice?major=${encodeURIComponent(f)}`}>{TRACK_FAMILY_SHORT[f]}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      <section className="section journal-home">
-        <PracticeJournal compact />
+      <section className="section journal-home band-alt">
+        <div className="section-inner">
+          <PracticeJournal compact />
+        </div>
       </section>
 
       <section className="section" id="tracks">
-        <h2>Open a featured room</h2>
-        <p className="support">Or browse the full catalog — then run a mock loop on any track.</p>
-        <div className="lesson-grid">
-          {featured.map((track) => (
-            <Link key={track.slug} href={`/practice/${track.slug}`} className="lesson-link">
-              <p className="meta">
-                {TRACK_FAMILY_SHORT[trackFamily(track.slug)]} · {track.scenarios.length} questions
-              </p>
-              <h3>{track.role}</h3>
-              <p>{track.blurb}</p>
+        <div className="section-inner">
+          <div className="section-intro">
+            <p className="eyebrow">Featured</p>
+            <h2>Open a featured room</h2>
+            <p className="support">Or browse the full catalog — then run a mock loop on any track.</p>
+          </div>
+          <div className="lesson-grid featured-grid">
+            {featured.map((track) => (
+              <Link key={track.slug} href={`/practice/${track.slug}`} className="lesson-link">
+                <p className="meta">
+                  {TRACK_FAMILY_SHORT[trackFamily(track.slug)]} · {track.scenarios.length} questions
+                </p>
+                <h3>{track.role}</h3>
+                <p>{track.blurb}</p>
+              </Link>
+            ))}
+          </div>
+          <p className="section-cta">
+            <Link href="/practice" className="btn primary">
+              Browse all {JOB_TRACKS.length} tracks
             </Link>
-          ))}
+          </p>
         </div>
-        <p className="section-cta">
-          <Link href="/practice" className="btn primary">
-            Browse all {JOB_TRACKS.length} tracks
-          </Link>
-        </p>
       </section>
     </>
   );

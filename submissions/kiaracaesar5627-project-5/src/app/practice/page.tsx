@@ -30,24 +30,31 @@ export default async function PracticeIndexPage({ searchParams }: Props) {
   }));
 
   return (
-    <section className="section" style={{ borderTop: "none", paddingTop: "2rem" }}>
+    <>
       <SessionHeartbeat />
-      <p className="eyebrow">
-        {session
-          ? `Candidate session · ${session.email}`
-          : "Guest practice · counted after first question"}
-      </p>
-      <h2>Open a room</h2>
-      <p className="support">
-        Filter by career major, pick the role you applied for, then drill a single prompt or start a
-        five-room mock loop.
-      </p>
-      <div className="practice-layout">
-        <div className="practice-main">
-          <TrackPicker tracks={tracks} initialFamily={major} />
+      <header className="practice-hero">
+        <p className="eyebrow">
+          {session
+            ? `Candidate session · ${session.email}`
+            : "Guest practice · counted after first question"}
+        </p>
+        <h1>Open a room</h1>
+        <p className="support practice-lede">
+          Filter by career major, pick the role you applied for, then drill a single prompt or start a
+          five-room mock loop.
+        </p>
+        <p className="meta practice-catalog-meta">
+          {JOB_TRACKS.length} tracks · 16 majors · 30 prompts each
+        </p>
+      </header>
+      <section className="section practice-section">
+        <div className="practice-layout">
+          <div className="practice-main">
+            <TrackPicker tracks={tracks} initialFamily={major} />
+          </div>
+          <PracticeJournal />
         </div>
-        <PracticeJournal />
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
