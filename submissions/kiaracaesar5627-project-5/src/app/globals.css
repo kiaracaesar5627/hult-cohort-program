@@ -10,9 +10,50 @@
   --accent-2: #c2410c;
   --ok: #047857;
   --bad: #b91c1c;
+  --room-bg: #14181f;
+  --room-fg: #f3f0ea;
+  --room-muted: rgba(243, 240, 234, 0.62);
+  --scenario-bg: #ebe6dc;
+  --edge-link-tint: #f3e6dc;
+  --band-alt-mix: #e8e3da;
+  --body-grad-top: #efebe3;
+  --body-grad-bottom: #e7e2d8;
+  --shadow: rgba(20, 24, 31, 0.12);
+  --shadow-soft: rgba(20, 24, 31, 0.08);
+  --progress-track: rgba(20, 24, 31, 0.1);
+  --hero-ring: rgba(20, 24, 31, 0.1);
+  --hero-grid: rgba(15, 118, 110, 0.14);
+  --overlay-soft: rgba(20, 24, 31, 0.1);
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-body: "Figtree", "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", Consolas, monospace;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e8ecef;
+  --paper: #0f1419;
+  --panel: #1a222c;
+  --line: rgba(232, 236, 239, 0.12);
+  --muted: #9aa3ad;
+  --accent: #2dd4bf;
+  --accent-2: #fb923c;
+  --ok: #34d399;
+  --bad: #f87171;
+  --room-bg: #05080c;
+  --room-fg: #f3f0ea;
+  --room-muted: rgba(243, 240, 234, 0.62);
+  --scenario-bg: color-mix(in srgb, var(--panel) 88%, var(--accent) 12%);
+  --edge-link-tint: rgba(251, 146, 60, 0.18);
+  --band-alt-mix: #1e2832;
+  --body-grad-top: #0c1016;
+  --body-grad-bottom: #14181f;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-soft: rgba(0, 0, 0, 0.28);
+  --progress-track: rgba(232, 236, 239, 0.12);
+  --hero-ring: rgba(232, 236, 239, 0.08);
+  --hero-grid: rgba(45, 212, 191, 0.16);
+  --overlay-soft: rgba(232, 236, 239, 0.1);
 }
 
 @theme inline {
@@ -32,6 +73,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
@@ -40,10 +82,17 @@ body {
   background:
     radial-gradient(1200px 600px at 10% -10%, rgba(15, 118, 110, 0.12), transparent 55%),
     radial-gradient(900px 500px at 100% 0%, rgba(194, 65, 12, 0.08), transparent 50%),
-    linear-gradient(180deg, #efebe3 0%, var(--paper) 40%, #e7e2d8 100%);
+    linear-gradient(180deg, var(--body-grad-top) 0%, var(--paper) 40%, var(--body-grad-bottom) 100%);
   color: var(--ink);
   font-family: var(--font-body);
   text-rendering: optimizeLegibility;
+}
+
+[data-theme="dark"] body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(45, 212, 191, 0.08), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(251, 146, 60, 0.06), transparent 50%),
+    linear-gradient(180deg, var(--body-grad-top) 0%, var(--paper) 40%, var(--body-grad-bottom) 100%);
 }
 
 a {
@@ -72,6 +121,33 @@ a {
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.4rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: color-mix(in srgb, var(--panel) 85%, var(--accent) 15%);
 }
 
 .brand-lockup {
@@ -187,7 +263,7 @@ a {
   padding: 0.5rem;
   background: var(--panel);
   border: 1px solid var(--line);
-  box-shadow: 0 12px 32px rgba(20, 24, 31, 0.12);
+  box-shadow: 0 12px 32px var(--shadow);
 }
 
 .settings-panel.open {
@@ -216,7 +292,7 @@ a {
     padding: 0.75rem;
     background: var(--panel);
     border: 1px solid var(--line);
-    box-shadow: 0 12px 32px rgba(20, 24, 31, 0.12);
+    box-shadow: 0 12px 32px var(--shadow);
   }
 
   .nav-links.open {
@@ -286,8 +362,8 @@ a {
       -18deg,
       transparent,
       transparent 14px,
-      rgba(15, 118, 110, 0.14) 14px,
-      rgba(15, 118, 110, 0.14) 15px
+      var(--hero-grid) 14px,
+      var(--hero-grid) 15px
     );
   mask-image: radial-gradient(circle at 40% 40%, black 30%, transparent 72%);
   pointer-events: none;
@@ -301,7 +377,7 @@ a {
   bottom: 12%;
   width: 280px;
   height: 280px;
-  border: 1px solid rgba(20, 24, 31, 0.1);
+  border: 1px solid var(--hero-ring);
   border-radius: 50%;
   animation: pulse-ring 7s ease-in-out infinite;
   pointer-events: none;
@@ -356,15 +432,15 @@ a {
   max-width: 26rem;
   margin-left: auto;
   padding: 1.4rem 1.5rem;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--room-bg);
+  color: var(--room-fg);
   border-left: 3px solid var(--accent);
   transform: rotate(-1.2deg);
   animation: card-settle 1.2s ease 0.2s both;
 }
 
 .hero-card .meta {
-  color: rgba(243, 240, 234, 0.62);
+  color: var(--room-muted);
 }
 
 .hero-card p:last-child {
@@ -428,8 +504,8 @@ a {
 }
 
 .btn.primary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--room-bg);
+  color: var(--room-fg);
 }
 
 .btn.primary:hover {
@@ -600,7 +676,7 @@ a {
 
 .progress-track {
   height: 3px;
-  background: rgba(20, 24, 31, 0.1);
+  background: var(--progress-track);
   overflow: hidden;
 }
 
@@ -723,7 +799,7 @@ a {
 .lesson-link:hover {
   transform: translateY(-2px);
   border-top-color: var(--accent-2);
-  box-shadow: 0 8px 24px rgba(20, 24, 31, 0.08);
+  box-shadow: 0 8px 24px var(--shadow-soft);
 }
 
 .lesson-link h3 {
@@ -1017,7 +1093,7 @@ a {
 
 .lesson-link.edge-link {
   border-left-color: var(--accent-2);
-  background: color-mix(in srgb, var(--panel) 80%, #f3e6dc);
+  background: color-mix(in srgb, var(--panel) 80%, var(--edge-link-tint));
 }
 
 .lesson-flow.room .eyebrow:has(+ *) {
@@ -1033,7 +1109,7 @@ a {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: var(--accent-2);
-  color: var(--paper);
+  color: var(--room-fg);
 }
 
 .loop-intro-title {
@@ -1109,7 +1185,7 @@ a {
   margin: 1.5rem 0 0;
   padding: 1.15rem 1.25rem;
   border-left: 3px solid var(--accent);
-  background: #ebe6dc;
+  background: var(--scenario-bg);
 }
 
 .scenario-box .meta {
@@ -1135,13 +1211,13 @@ a {
 .interviewer {
   margin: 1.5rem 0 0;
   padding: 1.25rem 1.35rem;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--room-bg);
+  color: var(--room-fg);
   border: none;
 }
 
 .interviewer .meta {
-  color: rgba(243, 240, 234, 0.65);
+  color: var(--room-muted);
   margin-bottom: 0.55rem;
 }
 
@@ -1836,7 +1912,7 @@ a {
 }
 
 .band-alt {
-  background: color-mix(in srgb, var(--paper) 70%, #e8e3da);
+  background: color-mix(in srgb, var(--paper) 70%, var(--band-alt-mix));
 }
 
 .practice-hero {
@@ -1916,25 +1992,25 @@ a {
 .site-footer {
   margin-top: 2rem;
   padding: 2.5rem 0 3rem;
-  background: var(--ink);
-  color: color-mix(in srgb, var(--paper) 72%, transparent);
+  background: var(--room-bg);
+  color: color-mix(in srgb, var(--room-fg) 72%, transparent);
   border-top: none;
 }
 
 .footer-brand strong {
-  color: var(--paper);
+  color: var(--room-fg);
 }
 
 .footer-tagline {
-  color: color-mix(in srgb, var(--paper) 85%, transparent);
+  color: color-mix(in srgb, var(--room-fg) 85%, transparent);
 }
 
 .footer-meaning {
-  color: color-mix(in srgb, var(--paper) 60%, transparent);
+  color: color-mix(in srgb, var(--room-fg) 60%, transparent);
 }
 
 .footer-links a {
-  color: color-mix(in srgb, var(--paper) 80%, var(--accent));
+  color: color-mix(in srgb, var(--room-fg) 80%, var(--accent));
 }
 
 @media (max-width: 640px) {

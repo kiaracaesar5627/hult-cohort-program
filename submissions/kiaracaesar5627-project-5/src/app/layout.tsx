@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE, novarisUrl, siteUrl } from "@/lib/site";
+import { themeInitScript } from "@/lib/theme";
 import { EnsurePracticeSession } from "@/components/EnsurePracticeSession";
 import { SiteNav } from "@/components/SiteNav";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,8 +18,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link
           href="https://fonts.bunny.net/css?family=figtree:400,500,600,700|fraunces:600,650,700|ibm-plex-mono:400,500"
@@ -33,7 +36,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 by {SITE.company.name}
               </a>
             </div>
-            <SiteNav />
+            <div className="header-actions">
+              <ThemeToggle />
+              <SiteNav />
+            </div>
           </header>
           <main>
             <EnsurePracticeSession />
