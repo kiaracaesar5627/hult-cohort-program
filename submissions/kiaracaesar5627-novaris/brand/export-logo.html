@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Novaris Logo Export — KiaraCaesar_BrandLogo</title>
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=fraunces:600,700|figtree:500"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Figtree, system-ui, sans-serif;
+        background: #e8e3da;
+        color: #14181f;
+        padding: 2rem;
+      }
+      h1 {
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+      }
+      p {
+        margin: 0 0 1.5rem;
+        color: #5c6570;
+        max-width: 52ch;
+        line-height: 1.5;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      button {
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.65rem 1.1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #0f766e;
+        color: #fff;
+      }
+      button.secondary {
+        background: #14181f;
+      }
+      button:hover {
+        filter: brightness(1.08);
+      }
+      .preview {
+        display: grid;
+        gap: 1.5rem;
+        max-width: 900px;
+      }
+      .card {
+        background: #fffdf8;
+        border: 1px solid rgba(20, 24, 31, 0.12);
+        border-radius: 10px;
+        padding: 1.25rem;
+      }
+      .card h2 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0f766e;
+        margin: 0 0 1rem;
+      }
+      canvas {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+      .checklist {
+        margin-top: 2rem;
+        padding: 1.25rem;
+        background: #fffdf8;
+        border-radius: 10px;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .checklist ul {
+        margin: 0.5rem 0 0;
+        padding-left: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Novaris brand logo export</h1>
+    <p>
+      Original logo for class submission. Symbol = raised diamond (aris) + threshold line.
+      Colors: Paper, Ink, Teal, Muted. Fonts: Fraunces + Figtree.
+    </p>
+    <div class="actions">
+      <button type="button" id="dl-light">Download KiaraCaesar_BrandLogo.png (light)</button>
+      <button type="button" class="secondary" id="dl-dark">Download KiaraCaesar_BrandLogo_dark.png</button>
+      <button type="button" class="secondary" id="dl-icon">Download KiaraCaesar_BrandLogo_icon.png</button>
+    </div>
+    <div class="preview">
+      <div class="card">
+        <h2>Primary — light background</h2>
+        <canvas id="c-light" width="1280" height="400"></canvas>
+      </div>
+      <div class="card">
+        <h2>Primary — dark background</h2>
+        <canvas id="c-dark" width="1280" height="400"></canvas>
+      </div>
+      <div class="card">
+        <h2>Icon mark</h2>
+        <canvas id="c-icon" width="480" height="480"></canvas>
+      </div>
+    </div>
+    <div class="checklist">
+      <strong>Before you submit</strong>
+      <ul>
+        <li>Business name easy to read — Fraunces wordmark at large size</li>
+        <li>Represents Novaris — threshold + readiness for career transitions</li>
+        <li>Colors fit audience — calm cream, serious ink, growth teal</li>
+        <li>Balanced horizontal lockup — works on flyer and invitation</li>
+      </ul>
+    </div>
+    <script>
+      const INK = "#14181f";
+      const PAPER = "#f3f0ea";
+      const TEAL = "#0f766e";
+      const MUTED = "#5c6570";
+      const BAND = "#e8e3da";
+
+      function drawThresholdMark(ctx, cx, cy, scale) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.fillStyle = TEAL;
+        ctx.save();
+        ctx.rotate(Math.PI / 4);
+        ctx.fillRect(-22 * scale, -22 * scale, 44 * scale, 44 * scale);
+        ctx.restore();
+        ctx.fillStyle = ctx.canvas.id === "c-dark" ? PAPER : INK;
+        ctx.globalAlpha = 0.88;
+        roundRect(ctx, -28 * scale, 34 * scale, 56 * scale, 4 * scale, 2 * scale);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.restore();
+      }
+
+      function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+      }
+
+      function drawPrimary(canvas, dark) {
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width;
+        const h = canvas.height;
+        const scale = w / 640;
+
+        ctx.fillStyle = dark ? INK : PAPER;
+        ctx.fillRect(0, 0, w, h);
+
+        drawThresholdMark(ctx, 72 * scale, 100 * scale, scale);
+
+        ctx.fillStyle = dark ? PAPER : INK;
+        ctx.font = `700 ${64 * scale}px Fraunces, Georgia, serif`;
+        ctx.textBaseline = "alphabetic";
+        ctx.fillText("Novaris", 148 * scale, 108 * scale);
+
+        ctx.fillStyle = dark ? BAND : MUTED;
+        ctx.font = `500 ${15 * scale}px Figtree, Arial, sans-serif`;
+        ctx.fillText("Practice before the moment.", 150 * scale, 142 * scale);
+      }
+
+      function drawIcon(canvas) {
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width;
+        const scale = w / 120;
+
+        ctx.fillStyle = PAPER;
+        roundRect(ctx, 0, 0, w, w, 12 * scale);
+        ctx.fill();
+
+        drawThresholdMark(ctx, 60 * scale, 58 * scale, scale * 0.9);
+      }
+
+      function download(canvas, filename) {
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
+
+      document.fonts.ready.then(() => {
+        const light = document.getElementById("c-light");
+        const dark = document.getElementById("c-dark");
+        const icon = document.getElementById("c-icon");
+        drawPrimary(light, false);
+        drawPrimary(dark, true);
+        drawIcon(icon);
+
+        document.getElementById("dl-light").onclick = () =>
+          download(light, "KiaraCaesar_BrandLogo.png");
+        document.getElementById("dl-dark").onclick = () =>
+          download(dark, "KiaraCaesar_BrandLogo_dark.png");
+        document.getElementById("dl-icon").onclick = () =>
+          download(icon, "KiaraCaesar_BrandLogo_icon.png");
+      });
+    </script>
+  </body>
+</html>

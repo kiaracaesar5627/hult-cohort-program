@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageMasthead } from "@/components/PageMasthead";
+import { SectionChapter } from "@/components/SectionChapter";
 import { SITE, interviewRoomUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -15,16 +17,14 @@ export default function ProductsPage() {
 
   return (
     <>
-      <header className="page-intro">
-        <p className="eyebrow">Portfolio</p>
-        <h1>Products</h1>
-        <p className="support lede">
-          Each product is a room before a high-stakes moment — practice that respects how real
-          conversations actually work.
-        </p>
-      </header>
+      <PageMasthead
+        chapter="Products"
+        eyebrow="Portfolio"
+        title="Products"
+        lead="Each product is a room before a high-stakes moment — practice that respects how real conversations actually work."
+      />
 
-      <section className="section" style={{ borderTop: "none", paddingTop: 0 }}>
+      <SectionChapter chapter="01" eyebrow="Live now" title="Interview Room">
         <div className="product-showcase">
           <article className="product-card featured">
             <p className="meta">Live now · Product #1</p>
@@ -40,32 +40,35 @@ export default function ProductsPage() {
               </a>
             </div>
           </article>
+          <div className="pipeline-panel">
+            <p className="eyebrow">Pipeline</p>
+            <h2 className="pipeline-title">More rooms to come</h2>
+            <p className="support">
+              Names below are directions, not launch promises — each room earns its place when the
+              craft is ready.
+            </p>
+            <ul className="future-grid">
+              <li className="live">
+                <strong>{product.name}</strong>
+                <span className="meta"> — live</span>
+              </li>
+              {futureOnly.map((room) => (
+                <li key={room}>{room}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </section>
+      </SectionChapter>
 
-      <section className="section" id="future">
-        <h2>More rooms to come</h2>
-        <p className="support">
-          {company.name} is building a family of practice spaces. Names below are directions, not
-          launch promises — each room will earn its place when the craft is ready.
-        </p>
-        <ul className="future-rooms">
-          <li>
-            <strong>{product.name}</strong>
-            <span className="meta"> — live</span>
-          </li>
-          {futureOnly.map((room) => (
-            <li key={room} className="meta">
-              {room}
-            </li>
-          ))}
-        </ul>
-        <p className="support" style={{ marginTop: "1.25rem" }}>
-          <Link href="/contact" className="text-link">
-            Contact us
-          </Link>{" "}
-          about partnerships or early access.
-        </p>
+      <section className="band band-alt">
+        <div className="shell">
+          <p className="support">
+            <Link href="/contact" className="text-link">
+              Contact us
+            </Link>{" "}
+            about partnerships or early access.
+          </p>
+        </div>
       </section>
     </>
   );
