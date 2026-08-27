@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.company.name}`,
   },
   description: SITE.company.mission,
+  other: {
+    "color-scheme": "light dark",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
